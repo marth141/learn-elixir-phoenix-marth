@@ -19,7 +19,7 @@
                     to: Routes.session_path(@conn, :delete, @current_user),
                     method: "delete" %>
             </li>
-          <%= else %>
+          <% else %>
             <li><%= link "Register", to: Routes.user_path(@conn, :new) %></li>
             <li><%= link "Log in", to: Routes.session_path(@conn, :new) %></li>
           <% end %>
