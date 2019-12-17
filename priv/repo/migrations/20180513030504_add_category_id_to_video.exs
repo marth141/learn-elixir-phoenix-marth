@@ -6,7 +6,12 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/phoenix14 for more book information.
 #---
-[
-  import_deps: [:ecto_sql],
-  inputs: ["*.exs"]
-]
+defmodule Rumbl.Repo.Migrations.AddCategoryIdToVideo do
+  use Ecto.Migration
+
+  def change do
+    alter table(:videos) do
+      add :category_id, references(:categories)
+    end
+  end
+end

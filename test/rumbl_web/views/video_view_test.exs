@@ -8,11 +8,8 @@ defmodule RumblWeb.VideoViewTest do
       %Rumbl.Multimedia.Video{id: "2", title: "cats"}
     ]
 
-    content = render_to_string(
-      RumblWeb.VideoView,
-      "index.html",
-      conn: conn,
-      videos: videos)
+    content = render_to_string(RumblWeb.VideoView, "index.html", conn: conn, videos: videos)
+
     assert String.contains?(content, "Listing Videos")
 
     for video <- videos do
@@ -21,12 +18,11 @@ defmodule RumblWeb.VideoViewTest do
   end
 
   test "renders new.html", %{conn: conn} do
-    _owner = %Rumbl.Accounts.User{}
     changeset = Rumbl.Multimedia.change_video(%Rumbl.Multimedia.Video{})
     categories = [%Rumbl.Multimedia.Category{id: 123, name: "cats"}]
 
     content =
-      render_to_string(RumblWeb.VideoView, "new.html",
+      render_to_string(RumblWeb.VideoView,"new.html",
         conn: conn,
         changeset: changeset,
         categories: categories

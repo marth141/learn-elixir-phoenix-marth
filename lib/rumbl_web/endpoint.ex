@@ -7,12 +7,10 @@ defmodule RumblWeb.Endpoint do
 
   # Serve at "/" the static files from "priv/static" directory.
   #
-  # You should set gzip to true if you are running phx.digest
+  # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/",
-    from: :rumbl,
-    gzip: false,
+    at: "/", from: :rumbl, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -40,7 +38,7 @@ defmodule RumblWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_rumbl_key",
-    signing_salt: "8C8eRniC"
+    signing_salt: "E2Lccpit"
 
   plug RumblWeb.Router
 end

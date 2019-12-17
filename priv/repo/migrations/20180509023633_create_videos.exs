@@ -6,7 +6,19 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/phoenix14 for more book information.
 #---
-[
-  import_deps: [:ecto_sql],
-  inputs: ["*.exs"]
-]
+defmodule Rumbl.Repo.Migrations.CreateVideos do
+  use Ecto.Migration
+
+  def change do
+    create table(:videos) do
+      add :url, :string
+      add :title, :string
+      add :description, :text
+      add :user_id, references(:users, on_delete: :nothing)
+
+      timestamps()
+    end
+
+    create index(:videos, [:user_id])
+  end
+end

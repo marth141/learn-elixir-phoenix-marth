@@ -6,7 +6,18 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/phoenix14 for more book information.
 #---
-[
-  import_deps: [:ecto_sql],
-  inputs: ["*.exs"]
-]
+defmodule Rumbl.Repo.Migrations.CreateUsers do
+  use Ecto.Migration
+
+  def change do
+    create table(:users) do
+      add :name, :string
+      add :username, :string, null: false
+      add :password_hash, :string
+
+      timestamps()
+    end
+
+    create unique_index(:users, [:username])
+  end
+end
